@@ -1,3 +1,3 @@
 # snake-game
 
-##Basic snake game made with JavaScript
+## Basic snake game made with JavaScript
