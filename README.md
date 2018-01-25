@@ -1,5 +1,3 @@
-# snake-game
+# Basic snake game made with JavaScript
 
-## Basic snake game made with JavaScript
-
-### Still under development
+## Still under development
