@@ -5,56 +5,45 @@ var snakeDirection;
 
 var size = 20;
 
-/*
-
-MAJOR OVERHAUL:
-
-ADD ARRAYS WITH THE SNAKE
-REMOVE VAR SNAKE
-CHANGE SNAKE VARIABLES TO NEW ARRAY
-
-*/
-
-
 var snake = [];
 
 snake[0] = {
-  x: 12 * size,
-  y: 12 * size
+    x: 12 * size,
+    y: 12 * size
 }
 
 var snakeX;
 var snakeY;
 
-score = 0;
+var score = 0;
 
 //draws the snake
 function drawSnake() {
 
     //makes the snake
-    for(var i = 0; i <snake.length; i++){
-    ctx.fillRect(snake[i].x, snake[i].y, size, size);
-  }
+    for (var i = 0; i < snake.length; i++) {
+        ctx.fillRect(snake[i].x, snake[i].y, size, size);
+    }
 
 
     //check if the snake hit the wall
 
-/* REMOVE ME
-  gameOver();
-*/
+    /* REMOVE ME
+      gameOver();
+    */
+
     //call the function to move the snake
     move();
-
+	  //call the function to remove the tail
     remove();
 }
-
 
 
 //moves the snake
 function move() {
 
-  snakeX = snake[0].x;
-  snakeY = snake[0].y;
+    snakeX = snake[0].x;
+    snakeY = snake[0].y;
 
     //move up
     if (snakeDirection == "up") {
@@ -72,18 +61,17 @@ function move() {
     } else if (snakeDirection == "right") {
         snakeX += size;
     }
-
 }
 
-function remove(){
-  snake.pop();
+function remove() {
+    snake.pop();
 
-  var newHead = {
-    x:snakeX,
-    y:snakeY
-  }
+    var newHead = {
+        x: snakeX,
+        y: snakeY
+    }
 
-  snake.unshift(newHead);
+    snake.unshift(newHead);
 }
 
 function gameOver() {
@@ -93,14 +81,14 @@ function gameOver() {
         ctx.clearRect(0, 0, c.width, c.height);
         snake.x = 240;
         snake.y = 240;
-        snakeDirection = null;
+        snakeDirection = "";
 
     //checks y axis
     } else if (snake.y < 0 || snake.y > c.height - size) {
         ctx.clearRect(0, 0, c.width, c.height);
         snake.x = 240;
         snake.y = 240;
-        snakeDirection = null;
+        snakeDirection = "";
     }
 }
 
