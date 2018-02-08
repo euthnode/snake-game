@@ -12,6 +12,11 @@ snake[0] = {
     y: 12 * size
 }
 
+var food = {
+    x : Math.floor(Math.random()*17+1) * size,
+    y : Math.floor(Math.random()*15+3) * size
+}
+
 var snakeX;
 var snakeY;
 
@@ -22,9 +27,11 @@ function drawSnake() {
 
     //makes the snake
     for (var i = 0; i < snake.length; i++) {
+      ctx.fillStyle = "Lightgreen";
         ctx.fillRect(snake[i].x, snake[i].y, size, size);
     }
-
+    ctx.fillStyle = "Tomato";
+    ctx.fillRect(food.x, food.y, size, size);
 
     //check if the snake hit the wall
 
@@ -64,7 +71,17 @@ function move() {
 }
 
 function remove() {
-    snake.pop();
+  if(snakeX == food.x && snakeY == food.y){
+       score++;
+       food = {
+           x : Math.floor(Math.random()*17+1) * size,
+           y : Math.floor(Math.random()*15+3) * size
+       }
+       // we don't remove the tail
+   }else{
+       // remove the tail
+       snake.pop();
+   }
 
     var newHead = {
         x: snakeX,
